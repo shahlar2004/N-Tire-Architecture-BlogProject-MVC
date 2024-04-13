@@ -1,0 +1,51 @@
+﻿<div class="p-5 m-5">
+
+
+    <table id="example" class="table table-striped" style="width:100%">
+
+        <thead>
+            <tr>
+                <th>Başlıq</th>
+                <th>Koteqoriya</th>
+                <th>Yaradılma Tarixi</th>
+                <th>Yaradan</th>
+                <th>Durum</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var article in Model)
+            {
+
+                <tr name="@article.Id">
+                    <th>@article.Tutle</th>
+                    <th>@article.Category.Name</th>
+                    <th>@article.CreatedDate.ToShortDateString()</th>
+                    <th>@article.CreatedBy</th>
+                    <th>@(article.isDeleted ? "Aktiv deyil" : "Aktiv")</th>
+                    <th style="display:flex; justify-content:space-between">
+
+                        <a class="btn btn-warning btn-sm" asp-area="Admin" asp-controller="Article" asp-action="ArticleUndoDelete" asp-route-articleId="@article.Id">
+                            <i class='bx bx-undo'></i>
+                        </a>
+
+                </tr>
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Başlıq</th>
+                <th>Koteqoriya</th>
+                <th>Yaradılma Tarixi</th>
+                <th>Yaradan</th>
+                <th>Durum</th>
+                <th>Action</th>
+
+            </tr>
+        </tfoot>
+
+    </table>
+
+</div>

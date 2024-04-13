@@ -1,0 +1,109 @@
+﻿
+
+
+<div class="content-wrapper">
+    <!-- Content -->
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="row">
+            <div class="col-lg-8 mb-4 order-0">
+                <div class="card">
+                    <div class="d-flex align-items-end row">
+                        <div class="col-sm-7">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">Admin panelinə xoş gəlmişsiniz! 🎉</h5>
+                                <p class="mb-4"> Burada səlahiyyətinizə uyğun bir çox əməliyyatları həyata keçirə bilərsiz!</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-5 text-center text-sm-left">
+                            <div class="card-body pb-0 px-0 px-md-4">
+                                <img src="~/sneat-1.0.0/assets/img/illustrations/man-with-laptop-light.png" height="140" alt="View Badge User" data-app-dark-img="illustrations/man-with-laptop-dark.png" data-app-light-img="illustrations/man-with-laptop-light.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 order-1">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 col-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <i class="bx bx-paper-plane"></i>
+                                </div>
+                                <span class="fw-medium d-block mb-1">Ümumi paylaşılan <br/> Məqalə sayı </span>
+                                <h3 id="articlecount" class="card-title mb-2 mt-2"></h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12 col-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title d-flex align-items-start justify-content-between">
+                                    <i class="bx bx-category"></i>
+                                </div>
+                                <span class="fw-medium d-block mb-1">Ümumi paylaşılan <br /> Kategoriya sayı </span>
+                                <h3 id="categorycount" class="card-title mb-2 mt-2"></h3>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            <!-- Total Revenue -->
+            <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+                <div class="card">
+                    <div class="row row-bordered g-0">
+                        
+                            <h6 class="card-title p-3 text-primary">@DateTime.Now.Year -cü il üçün məqalə analizi</h6>
+                        <div class="col-md-12 testbtn">
+                            <canvas id="BarChart" style="height:300px !important"></canvas>
+                        </div>
+ 
+                    </div>
+                </div>
+            </div>
+            <!--/ Total Revenue -->
+        </div>
+     
+
+    </div>
+    <!-- / Content -->
+    <!-- Footer -->
+    <footer class="content-footer footer bg-footer-theme">
+        <div class="container-xxl d-flex flex-wrap justify-content-between py-2 flex-md-row flex-column">
+            <div class="mb-2 mb-md-0">
+                © <script>
+                      document.write(new Date().getFullYear())
+
+                </script>
+                , made with ❤️ by <a href="https://themeselection.com" target="_blank" class="footer-link fw-medium">ThemeSelection</a>
+            </div>
+            <div class="d-none d-lg-inline-block">
+
+                <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
+                <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+                <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/documentation/" target="_blank" class="footer-link me-4">Documentation</a>
+                <a href="https://github.com/themeselection/sneat-html-admin-template-free/issues" target="_blank" class="footer-link">Support</a>
+            </div>
+        </div>
+    </footer>
+    <!-- / Footer -->
+
+
+    <div class="content-backdrop fade"></div>
+</div>
+
+
+@section Scripts 
+{
+    <script>
+        var app = app || {};
+        app.Urls = app.Urls || {};
+        app.Urls.yearlyArticlesUrl = "@(Url.Action("YearlyArticleCounts", "Home"))";
+        app.Urls.getArticleCountUrl = "@(Url.Action("GetTotalyArticleCounts", "Home"))";
+        app.Urls.getCategoryCountUrl = "@(Url.Action("GetTotalyCategoryCounts", "Home"))";
+
+    </script>
+    <script src="~/js/dashboardIndex.js"></script>
+}

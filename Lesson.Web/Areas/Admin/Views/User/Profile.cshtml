@@ -1,0 +1,67 @@
+﻿
+ @model UserProfileDTO
+
+<div class="card mt-5  m-auto" style="width:96%">
+      <h5 class="card-header">Mənim Profilim</h5>
+
+    <form asp-area="Admin" asp-controller="User" asp-action="Profile" method="post" enctype="multipart/form-data">
+
+      <div class="card-body">
+        <div class="d-flex align-items-start align-items-sm-center gap-4">
+          <img  src="~/images/@Model.image.FileName" alt="user-avatar" class="d-block rounded" height="100" width="100" id="uploadedAvatar">
+          <div class="button-wrapper">
+                <div class="mt-2" class="form-group">
+                    <label asp-for="Photo"  for="defaultFormControlInput" class="form-label mt-3">Photo</label>
+                    <input asp-for="Photo"  accept="image/*" type="file" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp">
+
+                </div>
+            <button type="button" class="btn btn-label-secondary account-image-reset mb-4">
+              <i class="bx bx-reset d-block d-sm-none"></i>
+            </button>
+
+          </div>
+        </div>
+      </div>
+      <hr class="my-0">
+      <div class="card-body">
+          <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label asp-for="FirstName"  class="form-label">Ad</label>
+                    <input asp-for="FirstName" class="form-control" type="text" autofocus="">
+                    <span asp-validation-for="FirstName" ></span>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label asp-for="LastName" class="form-label">Soyad</label>
+                    <input asp-for="LastName"  class="form-control" type="text" autofocus="">
+                    <span asp-validation-for="LastName" ></span>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label asp-for="Email"  class="form-label">Email Adresi</label>
+                    <input asp-for="Email"  class="form-control" type="text" autofocus="">
+                    <span asp-validation-for="Email" ></span>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label asp-for="PhoneNumber"  class="form-label">Telefon Nömrəsi</label>
+                    <input asp-for="PhoneNumber" class="form-control" type="text" autofocus="">
+                    <span asp-validation-for="PhoneNumber" ></span>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label asp-for="CurrentPassword"  class="form-label">Mövcud Şifrə</label>
+                    <input asp-for="CurrentPassword"  class="form-control" type="text" autofocus="">
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label asp-for="NewPassword" class="form-label">Yeni Şifrə (Opsiyonel)</label>
+                    <input asp-for="NewPassword" class="form-control" type="text" autofocus="">
+                </div>
+            </div>
+
+            <div class="mt-2">
+                <button type="submit" class="btn btn-primary me-2">Profili Yenilə</button>
+            </div>
+
+    </form>
+      </div>
+      <!-- /Account -->
+    </div>
+
+

@@ -1,0 +1,1 @@
+﻿console.log("Common js's working")

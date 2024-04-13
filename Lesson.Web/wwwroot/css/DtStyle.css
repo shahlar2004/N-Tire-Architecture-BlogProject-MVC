@@ -1,0 +1,47 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.delete, .update {
+    padding: 4.5px 5.625px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.delete {
+    background-color: red;
+}
+
+.update {
+    background-color: green;
+}
+
+.table img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    /* border:1px solid black; */
+}
+
+.table td {
+    font-weight: bold;
+    padding: 20px 15px;
+    font-size: 16px;
+}
+
+.display tr:hover {
+    background-color: #FFF !important;
+}
+
+.card-body {
+    overflow-x: auto;
+}
+
+.table th {
+    text-transform:initial !important;
+    font-size: 0.75rem !important;
+}

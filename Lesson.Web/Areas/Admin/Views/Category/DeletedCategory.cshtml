@@ -1,0 +1,55 @@
+﻿@model List<CategoryDTO>
+
+
+
+<div class="p-5 m-5">
+
+    <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="Category" asp-action="Add">Əlavə et</a>
+
+    <table id="example" class="table table-striped" style="width:100%">
+
+        <thead>
+            <tr>
+                <th>Başlıq</th>
+                <th>Yaradılma Tarixi</th>
+                <th>Yaradan</th>
+                <th>Durum</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+
+                <tr name="@category.Id">
+                    <th>@category.Name</th>
+                    <th>@category.CreatedBy</th>
+                    <th>@category.CreatedDate.ToShortDateString()</th>
+                    <th>@(category.isDeteled ? "Aktiv" : "Aktiv deyil")</th>
+                    <th style="display:flex; justify-content:space-between">
+                        <a class="btn btn-warning btn-sm" asp-area="Admin" asp-controller="Category" asp-action="UndoDelete" asp-route-categoryId="@category.Id">
+                            <i class='bx bx-undo'></i>
+                        </a>
+                </tr>
+
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Başlıq</th>
+                <th>Yaradılma Tarixi</th>
+                <th>Yaradan</th>
+                <th>Durum</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+
+    </table>
+
+</div>
+
+
+<!-- Button trigger modal -->
+<!-- Modal -->

@@ -1,0 +1,78 @@
+﻿@model List<UserDTO>
+
+<div class="p-5 m-5">
+
+    <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="User" asp-action="Add">Əlavə et</a>
+
+    <table id="example" class="table table-striped" style="width:100%">
+
+        <thead>
+            <tr>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Email</th>
+                <th>Telefon nömrəsi</th>
+                <th>Email təstiqi</th>
+                <th>Əlaqə xətaları</th>
+                <th>Rol</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+
+                <tr name="@user.Id">
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@user.FirstName</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@user.LastName</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@user.Email</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@user.PhoneNumber</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@(user.EmailConfirmed ? "Təstiqlənməyib" : "Təstiqlənib")</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@user.AccessFailedCount</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@user.Role</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;" style="display:flex; justify-content:space-between">
+                        <a class="btn btn-primary btn-sm" asp-area="Admin" asp-controller="User" asp-action="Update" asp-route-userId="@user.Id">
+                            <i class="bx bx-edit"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="bx text-white bxs-message-square-x"></i></a>
+                   </th>
+                </tr>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Məqaləni silmək istədiyinizdən əminsiz?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bağla</button>
+                                <a type="button" asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-userId="@user.Id" class="btn btn-primary">Bəli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Ad</th>
+                <th>Soyad</th>
+                <th>Email</th>
+                <th>Telefon nömrəsi</th>
+                <th>Email təstiqi</th>
+                <th>Əlaqə xətaları</th>
+                <th>Rol</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+
+    </table>
+
+</div>

@@ -1,0 +1,76 @@
+﻿@model List<CategoryDTO>
+
+
+
+<div class="p-5 m-5">
+
+    <a class="btn btn-primary mb-3" asp-area="Admin" asp-controller="Category" asp-action="Add">Əlavə et</a>
+
+    <table id="example" class="table table-striped" style="width:100%">
+
+        <thead>
+            <tr>
+                <th>Başlıq</th>
+                <th>Yaradılma Tarixi</th>
+                <th>Yaradan</th>
+                <th>Durum</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in Model)
+            {
+
+                <tr name="@category.Id">
+                    <th>@category.Name</th>
+                    <th>@category.CreatedBy</th>
+                    <th>@category.CreatedDate.ToShortDateString()</th>
+                    <th>@(category.isDeteled ? "Aktiv deyil" : "Aktiv")</th>
+                    <th style="display:flex; justify-content:space-between">
+                        <a class="btn btn-primary btn-sm" asp-area="Admin" asp-controller="Category" asp-action="Update" asp-route-categoryId="@category.Id">
+                            <i class="bx bx-edit"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"> <i class="bx text-white bxs-message-square-x"></i></a>
+                </tr>
+
+
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Məqaləni silmək istədiyinizdən əminsiz?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bağla</button>
+                                <a type="button" asp-area="Admin" asp-controller="Category" asp-action="Delete" asp-route-categoryId="@category.Id" class="btn btn-primary">Bəli</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Başlıq</th>
+                <th>Yaradılma Tarixi</th>
+                <th>Yaradan</th>
+                <th>Durum</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+
+    </table>
+
+</div>
+
+
+<!-- Button trigger modal -->
+<!-- Modal -->

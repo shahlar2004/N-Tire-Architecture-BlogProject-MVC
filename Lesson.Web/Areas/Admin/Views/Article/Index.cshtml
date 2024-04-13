@@ -1,0 +1,75 @@
+﻿@using Lesson.Web.Areas.Consts
+
+@model List<ArticleDTO>
+
+
+
+<div class="p-5 m-5">
+
+    @{
+        @if (User.IsInRole("Superadmin") || (User.IsInRole("Admin")))
+        {
+             <a  class="btn btn-primary mb-3" asp-area="Admin"  asp-controller="Article" asp-action="Add">Əlavə et</a>
+            
+        }
+    }
+
+
+<table id="example" class="table table-striped" style="width:100%" >
+
+    <thead>
+        <tr>
+            <th>Başlıq</th> 
+            <th>Koteqoriya</th>
+            <th>Yaradılma Tarixi</th>
+            <th>Yaradan</th>
+            <th>Durum</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+       @foreach (var article in Model)
+    {
+
+        <tr name="@article.Id">
+            <th>@article.Tutle</th>
+            <th>@article.Category.Name</th>
+            <th>@article.CreatedDate.ToShortDateString()</th>
+            <th>@article.CreatedBy</th>
+            <th>@(article.isDeleted ? "Aktiv deyil" : "Aktiv")</th>
+            <th style="display:flex; justify-content:space-between">
+
+                @{
+                            @if (User.IsInRole("Superadmin") || (User.IsInRole("Admin")))
+               {
+               <a class="btn btn-primary btn-sm" asp-area="Admin" asp-controller="Article" asp-action="Update"  asp-route-articleId="@article.Id"> <i class="bx bx-edit"></i></a>
+                                <a class="btn btn-danger btn-sm" asp-area="Admin" asp-controller="Article" asp-action="Delete" asp-route-articleId="@article.Id"><i class='bx bxs-message-alt-x'></i></a>
+                }
+                }
+        </tr>
+
+            }
+   
+    </tbody>
+    <tfoot>
+      <tr>
+        <th>Başlıq</th>
+        <th>Koteqoriya</th>
+        <th>Yaradılma Tarixi</th>
+        <th>Yaradan</th>
+        <th>Durum</th>
+        <th>Action</th>
+    
+      </tr>
+    </tfoot>
+
+</table>
+
+</div>
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->

@@ -1,0 +1,70 @@
+﻿@model ArticleUpdateDTO
+
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light"> Məqalə dəyişdirilməsi /</span> Məqalələr
+    </h4>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <form asp-controller="Article" asp-action="Update" method="post" enctype="multipart/form-data">
+
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="card-body">
+                        <input type="hidden" asp-for="Id"/>
+                        <div class="mt-2" class="form-group">
+                            <select id="categoryList" class="form-control" asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"Id","Name"))"></select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mt-2" class="form-group">
+                            <label asp-for="Tutle" for="defaultFormControlInput" class="form-label">Başlıq</label>
+                            <input asp-for="Tutle" type="text" class="form-control" id="defaultFormControlInput" placeholder="Başlıq..." aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="Tutle" class="text-danger"></span>
+                        </div>
+
+                        <div class="mt-2" class="form-group">
+                            <label asp-for="Content" for="defaultFormControlInput" class="form-label">Kontent</label>
+                            <textarea asp-for="Content" type="text" class="form-control" id="defaultFormControlInput" placeholder="Kontent..." style="min-height:300px" aria-describedby="defaultFormControlHelp"></textarea>
+                            <span asp-validation-for="Content" class="text-danger"></span>
+                        </div>
+
+                        <div class="mt-2" class=" container form-group mt-5 ">
+
+                            <div class="row">
+
+                                <div class="col-6">
+                                    <img src="~/images/@Model.Image.FileName" style="width:400px; height:auto" />
+                                </div>
+
+                           <div class="col-6">
+                            <label asp-for="Photo" for="defaultFormControlInput" class="form-label mt-3">Kontent</label>
+                            <input asp-for="Photo" accept="image/*" type="file" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="Photo" class="text-dang/er"></span>
+                           </div>
+
+                        
+
+                            </div>
+                        </div>
+                  
+
+
+                  
+
+
+                        <div class="form-group mt-3" >
+                            <button class="btn btn-success" type="submit">Yadda saxla</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
