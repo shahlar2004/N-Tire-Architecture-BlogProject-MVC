@@ -15,6 +15,10 @@ namespace Lesson.Data.Context
     public class AppDbContext : IdentityDbContext<AppUser,AppRole,Guid,AppUserClaim,AppUserRole,AppUserLogin,AppRoleClaim,AppUserToken>
     {
 
+        public AppDbContext()
+        {
+                            
+        }
         public AppDbContext(DbContextOptions options) : base(options)
         {
            
