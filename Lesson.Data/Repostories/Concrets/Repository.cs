@@ -74,6 +74,7 @@ namespace Lesson.Data.Repostories.Concrets
         }
 
 
+
         public async Task<T> GetByGuidAsync(Guid? id)
         {
             return await Table.FindAsync(id);

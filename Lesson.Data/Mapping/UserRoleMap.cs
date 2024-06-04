@@ -29,7 +29,6 @@ namespace Lesson.Data.Mapping
             {
                 UserId = Guid.Parse("{B5C0033F-E7F1-4610-A19C-FA970C039602}"),
                 RoleId = Guid.Parse("81D91823-EB61-4D17-A1FC-8A286F88F6D4")
-
             }
             );
         }

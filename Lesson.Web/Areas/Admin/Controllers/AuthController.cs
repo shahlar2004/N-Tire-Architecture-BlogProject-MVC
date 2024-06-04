@@ -10,9 +10,7 @@ namespace Lesson.Web.Areas.Admin.Controllers
     public class AuthController : Controller
     {
         private readonly UserManager<AppUser> userManager;
-
-        public SignInManager<AppUser> signInManager { get; }
-
+        private readonly SignInManager<AppUser> signInManager;
         public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             this.userManager = userManager;
@@ -34,6 +32,7 @@ namespace Lesson.Web.Areas.Admin.Controllers
                 ModelState.AddModelError("", "E-mail adresiniz  və ya şifrəniz yanlışdır. ");
                 return View();
             }
+
             if (ModelState.IsValid)
             {
                 var user = await userManager.FindByEmailAsync(userLoginDTO.Email);
